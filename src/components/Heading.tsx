@@ -90,7 +90,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       <Component
         ref={ref}
         className={cn(
-          "text-wrap wrap-break-word",
+          "text-wrap wrap-break-word text-white",
           headingVariants({ size: finalSize, weight, align, leading }),
           className
         )}

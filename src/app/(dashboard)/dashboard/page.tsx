@@ -1,10 +1,11 @@
+import InboxPage from "@/src/components/dashboard/inbox-page/InboxPage";
 
 const page = () => {
-    return (
-        <>
-       hello from dashboard
-        </>
-    );
+  return (
+    <>
+      <InboxPage />
+    </>
+  );
 };
 
 export default page;

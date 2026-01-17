@@ -67,8 +67,9 @@ function SidebarHeader() {
         )}
 
         {isExpanded && (
-          <Link href={"/"} className="flex justify-center items-center">
-            <Image src="/Logo.svg" alt="logo" width={180} height={150} />
+          <Link href={"/"} className="flex justify-between gap-6 items-center">
+            <Image src="/Logo.png" alt="logo" width={80} height={80} />
+            <span className="ml-2 text-white font-bold text-2xl">Nikko</span>
           </Link>
         )}
       </motion.div>

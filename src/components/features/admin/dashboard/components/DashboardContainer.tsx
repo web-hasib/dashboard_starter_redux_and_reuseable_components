@@ -66,7 +66,7 @@ export function DashboardHeaderContainer({ children }: DashboardSidebarProps) {
 
 export function DashboardMainContainer({ children }: DashboardMainProps) {
   return (
-    <div className="[grid-area:main] bg-black overflow-y-auto overflow-x-auto">
+    <div className="[grid-area:main] bg-[#1d1d1d] overflow-y-auto overflow-x-auto">
       {children}
     </div>
   );
