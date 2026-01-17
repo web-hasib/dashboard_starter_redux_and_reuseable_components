@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Optional light variant if needed later */
+@custom-variant light (&:is(.light *));
+
+/* =======================
+   BASE STYLES
+======================= */
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: color-mix(in oklch, var(--ring) 50%, transparent);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* =======================
+   THEME TOKENS (Tailwind v4)
+======================= */
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+:root {
+  --radius: 0.625rem;
+
+  /* === BACKGROUNDS === */
+  --background: #111213;
+  --sidebar: #5e7389;
+  --card: #1a1c1e;
+  --popover: #7494b3;
+
+  /* === TEXT === */
+  --foreground: #ededed;
+  --card-foreground: #ededed;
+  --popover-foreground: #ededed;
+  --sidebar-foreground: #d6d6d6;
+
+  --muted: #222426;
+  --muted-foreground: #9a9a9a;
+
+  /* === BORDERS & RINGS === */
+  --border: rgba(255, 255, 255, 0.08);
+  --ring: rgba(255, 255, 255, 0.25);
+
+  /* === PRIMARY (Neutral buttons) === */
+  --primary: #242424;
+  --primary-foreground: #483f3f;
+
+  --secondary: #1f2124;
+  --secondary-foreground: #e5e5e5;
+
+  --accent: #2a2c2f;
+  --accent-foreground: #ffffff;
+
+  /* === SIDEBAR === */
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+  --sidebar-ring: rgba(255, 255, 255, 0.3);
+
+  /* === STATUS COLORS (IMPORTANT) === */
+  --blue: #2563eb;        /* Live chat */
+  --green: #16a34a;       /* Wallet */
+  --purple: #9333ea;      /* Marketplace */
+  --red: #dc2626;         /* SOS */
+  --gray: #6b7280;        /* Comment */
+}
