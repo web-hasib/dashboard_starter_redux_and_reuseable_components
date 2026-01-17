@@ -23,8 +23,10 @@ export default function DashboardActiveLink({
       href={href}
       className={cn(
         "flex items-center gap-y-2.5 rounded-xl whitespace-nowrap",
-        isActive && "bg-[#898989] text-white!",
-        !isActive && "hover:bg-[#898989] text-black hover:text-white",
+        isActive && isExpanded && "bg-accent-foreground/30 text-accent-foreground! border-l-4 border-accent-foreground!",
+        isActive && !isExpanded && "bg-secondary-foreground/30 text-accent-foreground!",
+        !isActive && isExpanded && "hover:bg-secondary-foreground/10 text-secondary hover:text-accent-foreground!",
+        !isActive && !isExpanded && "hover:bg-secondary-foreground/10 hover:text-accent-foreground/50! text-accent-foreground/20!",
         className
       )}
     >

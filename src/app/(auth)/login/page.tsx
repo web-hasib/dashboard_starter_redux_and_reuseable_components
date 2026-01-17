@@ -1,154 +1,3 @@
-// "use client";
-
-// import Image from "next/image";
-// import { useState } from "react";
-// import { useRouter } from "next/navigation";
-// import Logo from "@/public/logo.png"
-// import { Eye, EyeOff } from "lucide-react";
-// import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-// import { SerializedError } from "@reduxjs/toolkit";
-// import { useDispatch, useSelector } from "react-redux";
-// import { RootState } from "@/src/redux/store";
-// import { Spinner } from "@/src/components/ui/spinner";
-// import { useLoginMutation } from "@/src/redux/api/auth/authApi";
-// import Cookies from "js-cookie";
-// import { toast } from "sonner";
-// import { setCredentials } from "@/src/redux/features/authSlice";
-
-// export default function LoginPage() {
-//   const router = useRouter();
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   const [login, { isLoading }] = useLoginMutation();
-//   const dispatch = useDispatch();
-
-//   const [showPassword, setShowPassword] = useState(false);
-
-//   // Get User Information from store
-//   const { loggedUser } = useSelector((state: RootState) => state.auth);
-
-//   // Set Error MSG
-//   const [error, setError] = useState<
-//     FetchBaseQueryError | SerializedError | null
-//   >(null);
-
-//   const handleLogin = async () => {
-//     // if (email === "admin@gmail.com" && password === "admin@gmail") {
-
-//     //   const authData = {
-//     //     email: email,
-//     //     token: "demo-token-123",
-//     //     isAuthenticated: true,
-//     //   };
-//     //   localStorage.setItem("auth", JSON.stringify(authData));
-
-//     //   setTimeout(() => {
-//     //     router.push("/dashboard");
-//     //   }, 100);
-//     // } else {
-//     //   setError("Invalid email or password");
-
-//     const payload = {
-//       email,
-//       password,
-//     };
-
-//     try {
-//       const res = await login(payload).unwrap();
-//       console.log("res", res);
-
-//       // If Success then redirect into verify OTP page
-//       if (res?.data) {
-//         console.log("Logged In", res?.data?.token);
-//         // Token
-//         const token = res?.data?.token;
-
-//         // Set toekn
-//         Cookies.set("accessToken", `Bearer ${token}`, { expires: 7 });
-
-//         console.log(loggedUser?.role);
-
-//         // Store Data Into Redux
-//         dispatch(setCredentials(token));
-//         router.push("/admin-dashboard");
-//       }
-
-//       // Set Error
-//       if ("error" in res) {
-//         setError(res?.error ?? null);
-//       } else {
-//         setError(null);
-//       }
-//     } catch (error) {
-//       console.error("Unexpected error:", error);
-//     }
-//   };
-//   if (error) {
-//     console.log("Login Error", error);
-//     toast.error("Login Failed! Please check your credentials.");
-//   }
-
-//   return (
-//     <div className="min-h-screen flex items-center justify-center px-4">
-//       <div className="w-full max-w-md bg-card border rounded-2xl p-8 shadow-lg">
-//         <div className="flex justify-center mb-4">
-//           <Image src={Logo} alt="logo" width={100} height={80} />
-//         </div>
-
-//         <div className="text-center mb-6">
-//           <h1 className="text-3xl font-bold">Welcome Back</h1>
-//           <p className="text-sm text-muted-foreground">Login to continue</p>
-//         </div>
-
-//         <div className="space-y-5">
-//           <div>
-//             <label className="text-sm">Email</label>
-//             <input
-//               type="email"
-//               value={email}
-//               placeholder="admin@gmail.com"
-//               onChange={(e) => setEmail(e.target.value)}
-//               className="w-full border rounded-lg px-4 py-3 text-sm"
-//               defaultValue="admin@gmail.com"
-//             />
-//           </div>
-
-//           <div>
-//             <label className="text-sm">Password</label>
-//             <div className="relative">
-//               <input
-//                 type={showPassword ? "text" : "password"}
-//                 value={password}
-//                 placeholder="admin@gmail"
-//                 onChange={(e) => setPassword(e.target.value)}
-//                 className="w-full border rounded-lg px-4 py-3 text-sm pr-10"
-//                 defaultValue="admin@gmail"
-//               />
-//               <button
-//                 type="button"
-//                 onClick={() => setShowPassword(!showPassword)}
-//                 className="absolute right-3 top-1/2 -translate-y-1/2"
-//               >
-//                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-//               </button>
-//             </div>
-//           </div>
-
-//           <button
-//             onClick={handleLogin}
-//             disabled={isLoading}
-//             className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold"
-//           >
-//             {isLoading ? <Spinner /> : ""}Login
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
 
 
 "use client";
@@ -211,27 +60,29 @@ export default function LoginPage() {
 
   // ✅ Submit Handler
   const onSubmit = async (data: LoginFormData) => {
-    try {
-      const res = await login(data).unwrap();
+  console.log(data);
+  
+    // try {
+    //   const res = await login(data).unwrap();
 
-      console.log(res);
-      if (res?.data?.result?.accessToken) {
-        const token = res?.data?.result?.accessToken;
-        console.log(token);
+    //   console.log(res);
+    //   if (res?.data?.result?.accessToken) {
+    //     const token = res?.data?.result?.accessToken;
+    //     console.log(token);
 
-        // Cookie
-        Cookies.set("accessToken", `Bearer ${token}`, { expires: 7 });
+    //     // Cookie
+    //     Cookies.set("accessToken", `Bearer ${token}`, { expires: 7 });
 
-        // Redux
-        dispatch(setCredentials(token));
+    //     // Redux
+    //     dispatch(setCredentials(token));
 
-        toast.success("Login successful!");
-        router.push("/dashboard");
-      }
-    } catch (err) {
-      setError(err as FetchBaseQueryError);
-      toast.error("Login failed! Check credentials.");
-    }
+    //     toast.success("Login successful!");
+    //     router.push("/dashboard");
+    //   }
+    // } catch (err) {
+    //   setError(err as FetchBaseQueryError);
+    //   toast.error("Login failed! Check credentials.");
+    // }
   };
 
   return (

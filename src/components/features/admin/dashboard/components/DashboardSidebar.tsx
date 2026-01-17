@@ -17,35 +17,37 @@ export default function DashboardSidebar({ children }: DashboardSidebarProps) {
   const { isCollapsedSidebar } = useSidebar();
 
   return (
-    <motion.nav
-      className={cn(
-        "h-full flex flex-col gap-2 z-50 sticky top-0 whitespace-nowrap px-4 shadow-xs  text-base bg-primary"
-      )}
-      style={{
-        width: isCollapsedSidebar
-          ? "var(--_sidebar-collapsed)"
-          : "var(--_sidebar-expanded)",
-      }}
-      animate={{
-        width: isCollapsedSidebar
-          ? "var(--_sidebar-collapsed)"
-          : "var(--_sidebar-expanded)",
-      }}
-    >
-      <div className="absolute right-0 top-0 z-10">
-        <SidebarToggleButton />
+    <div className="relative h-full bg-primary">
+      <motion.nav
+        className={cn(
+          "h-full flex flex-col gap-2 z-50 sticky top-0 whitespace-nowrap px-4 shadow-xs  text-base bg-primary overflow-hidden"
+        )}
+        style={{
+          width: isCollapsedSidebar
+            ? "var(--_sidebar-collapsed)"
+            : "var(--_sidebar-expanded)",
+        }}
+        animate={{
+          width: isCollapsedSidebar
+            ? "var(--_sidebar-collapsed)"
+            : "var(--_sidebar-expanded)",
+        }}
+      >
+        <div className="absolute right-0 top-0 z-10">
+          <SidebarToggleButton />
+        </div>
+        <SidebarHeader />
+
+       <div className="flex-1 space-y-(--_sidebar-spacing) -mr-4 pr-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
+        {children}
       </div>
-      <SidebarHeader />
 
-     <div className="flex-1 space-y-(--_sidebar-spacing) -mr-4 pr-4">
-  {children}
-</div>
+      <div className="border-t mb-2 md:mb-4 lg:mb-6 border-white/10 bg-white rounded-md pt-1 mt-2">
+        <DashboardLogoutButton />
+      </div>
 
-<div className="border-t border-white/10 bg-white rounded-md pt-1 mt-2">
-  <DashboardLogoutButton />
-</div>
-
-    </motion.nav>
+      </motion.nav>
+    </div>
   );
 }
 
@@ -60,7 +62,7 @@ function SidebarHeader() {
       >
         {!isExpanded && (
           <Link href={"/"}>
-            <Image src="/Logo.svg" alt="logo" width={100} height={80} />
+            <Image src="/Logo.png" alt="logo" width={100} height={80} />
           </Link>
         )}
 

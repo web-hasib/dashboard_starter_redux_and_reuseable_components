@@ -2,17 +2,14 @@
 
 import {
   DashboardContainer,
-  DashboardHeader,
-  DashboardSidebar,
+  DashboardSidebar
 } from "@/src/components/features/admin/dashboard/components";
 import {
-  DashboardHeaderContainer,
   DashboardMainContainer,
-  DashboardSidebarContainer,
+  DashboardSidebarContainer
 } from "@/src/components/features/admin/dashboard/components/DashboardContainer";
 import DashboardNavigation from "@/src/components/features/admin/dashboard/components/DashboardNavigation";
 import SidebarProvider from "@/src/components/features/admin/dashboard/components/SidebarProvider";
-import PrivateRoute from "@/src/components/PrivateRoute";
 
 import {
   Book,
