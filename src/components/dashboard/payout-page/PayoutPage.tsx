@@ -258,7 +258,6 @@
 
 // export default PayoutPage;
 
-
 "use client";
 
 import { useState, useMemo } from "react";
@@ -394,37 +393,38 @@ const PayoutPage = () => {
 
   return (
     <FormProvider {...form}>
-      <Container className="py-6 min-h-screen">
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <Container className="py-4 sm:py-6 min-h-screen px-4 sm:px-6">
+        <div className="mb-6 flex flex-col gap-6">
           <div>
             <Heading as="h2" size="h4">
               Payout Approvals
             </Heading>
-            <p className="mt-2 text-sm text-muted-foreground">
+            <p className="mt-2 text-xs sm:text-sm text-muted-foreground">
               Review and approvals daily payout queue
             </p>
           </div>
 
-          <div className="flex items-end gap-4 mb-6">
-            <div className="relative w-full max-w-md">
+          <div className="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-4">
+            <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 {...form.register("search")}
-                placeholder="Search by user, ticket id, category, sub-category etc..."
-                className="pl-9 h-10 bg-muted/50 border-border"
+                placeholder="Search by user, ticket id, category..."
+                className="pl-9 h-10 bg-muted/50 border-border text-xs sm:text-sm w-full"
               />
             </div>
 
-            <Button variant="default" className="h-10">
-              <Download /> Download
+            <Button variant="default" className="h-10 w-full sm:w-auto shrink-0 text-xs sm:text-sm">
+              <Download className="h-4 w-4" /> 
+              <span className="hidden sm:inline">Download</span>
             </Button>
 
             <Select
               value={filterValue}
               onValueChange={(value) => form.setValue("filter", value)}
             >
-              <SelectTrigger className="w-full sm:w-44 h-10 bg-muted/50 border-border">
-                <SlidersHorizontal className="mr-2 h-4 w-4" />
+              <SelectTrigger className="w-full sm:w-44 h-10 bg-muted/50 border-border text-xs sm:text-sm">
+                <SlidersHorizontal className="mr-2 h-4 w-4 shrink-0" />
                 <SelectValue placeholder="Filter by status" />
               </SelectTrigger>
               <SelectContent>
@@ -436,42 +436,40 @@ const PayoutPage = () => {
           </div>
         </div>
 
-        <div className="mt-10 bg-card overflow-hidden scrollbar-thin">
+        <div className="mt-8 sm:mt-10 bg-card overflow-x-auto scrollbar-thin rounded-lg">
           <Table>
             <TableHeader className="border-b-3 border-b-[#ffffff82]">
               <TableRow>
-                <TableHead className="w-36 text-lg font-medium">ID</TableHead>
-                <TableHead className="text-lg font-medium">User</TableHead>
-                <TableHead className="text-lg font-medium">Transaction ID</TableHead>
-                <TableHead className="text-lg font-medium">Date</TableHead>
-                <TableHead className="text-lg font-medium">Amount</TableHead>
-                <TableHead className="text-lg font-medium w-44">Status</TableHead>
-                <TableHead className="text-lg font-medium w-16 text-right">
-                  Actions
-                </TableHead>
+                <TableHead className="text-xs sm:text-sm md:text-lg font-medium whitespace-nowrap px-2 sm:px-4">ID</TableHead>
+                <TableHead className="text-xs sm:text-sm md:text-lg font-medium whitespace-nowrap px-2 sm:px-4">User</TableHead>
+                <TableHead className="text-xs sm:text-sm md:text-lg font-medium whitespace-nowrap px-2 sm:px-4">Transaction ID</TableHead>
+                <TableHead className="text-xs sm:text-sm md:text-lg font-medium whitespace-nowrap px-2 sm:px-4">Date</TableHead>
+                <TableHead className="text-xs sm:text-sm md:text-lg font-medium whitespace-nowrap px-2 sm:px-4">Amount</TableHead>
+                <TableHead className="text-xs sm:text-sm md:text-lg font-medium whitespace-nowrap px-2 sm:px-4">Status</TableHead>
+                <TableHead className="text-xs sm:text-sm md:text-lg font-medium whitespace-nowrap px-2 sm:px-4 text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
 
             <TableBody>
               {paginatedData.map((item) => (
                 <TableRow key={item.id} className="hover:bg-muted/50">
-                  <TableCell className="font-medium">#{item.id}</TableCell>
-                  <TableCell className="font-medium text-[#173d90]">
+                  <TableCell className="font-medium text-xs sm:text-sm px-2 sm:px-4">#{item.id}</TableCell>
+                  <TableCell className="font-medium text-[#173d90] text-xs sm:text-sm px-2 sm:px-4 truncate">
                     {item.user}
                   </TableCell>
-                  <TableCell>{item.transictionId}</TableCell>
-                  <TableCell>{item.date}</TableCell>
-                  <TableCell>{item.amount}</TableCell>
-                  <TableCell className="truncate text-muted-foreground">
+                  <TableCell className="text-xs sm:text-sm px-2 sm:px-4 truncate">{item.transictionId}</TableCell>
+                  <TableCell className="text-xs sm:text-sm px-2 sm:px-4 whitespace-nowrap">{item.date}</TableCell>
+                  <TableCell className="text-xs sm:text-sm px-2 sm:px-4 whitespace-nowrap">{item.amount}</TableCell>
+                  <TableCell className="text-xs sm:text-sm text-muted-foreground px-2 sm:px-4 truncate">
                     {item.status}
                   </TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex justify-end gap-2">
-                      <Button variant="success" size="sm">
-                        <Check className="h-4 w-4" />
+                  <TableCell className="text-right px-2 sm:px-4">
+                    <div className="flex justify-end gap-1 sm:gap-2">
+                      <Button variant="success" size="sm" className="h-8 w-8 p-0 sm:h-9 sm:w-9">
+                        <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                       </Button>
-                      <Button variant="error" size="sm">
-                        <X className="h-4 w-4" />
+                      <Button variant="error" size="sm" className="h-8 w-8 p-0 sm:h-9 sm:w-9">
+                        <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                       </Button>
                     </div>
                   </TableCell>
@@ -488,7 +486,7 @@ const PayoutPage = () => {
             totalItems={filteredData.length}
             pageSize={ITEMS_PER_PAGE}
             onPageChange={setCurrentPage}
-            className="mt-4"
+            className="mt-4 sm:mt-6"
           />
         )}
       </Container>

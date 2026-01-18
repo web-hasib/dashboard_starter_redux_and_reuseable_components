@@ -16,7 +16,9 @@ import {
   BookOpenCheck,
   ClipboardCheck,
   DollarSign,
-  LucideUser
+  Inbox,
+  LucideUser,
+  Scroll
 } from "lucide-react";
 import { Suspense } from "react";
 
@@ -29,8 +31,8 @@ const navItems = [
   // },
   {
     href: "/dashboard",
-    name: "Applications",
-    icon: <LucideUser />,
+    name: "Inbox",
+    icon: <Inbox />,
     children: [],
   },
   {
@@ -40,9 +42,9 @@ const navItems = [
     children: [],
   },
   {
-    href: "/dashboard/sales-tracking-log",
-    name: "Sales Tracking Log",
-    icon: <ClipboardCheck />,
+    href: "/dashboard/audit-logs",
+    name: "Audit Logs",
+    icon: <Scroll />,
     children: [],
   },
   {
@@ -51,12 +53,7 @@ const navItems = [
     icon: <Book />,
     children: [],
   },
-  {
-    href: "/dashboard/calender-and-remainders",
-    name: "Calender And Remainders",
-    icon: <BookOpenCheck />,
-    children: [],
-  },
+  
 ];
 
 export default function DashboardLayout({ children }: React.PropsWithChildren) {
