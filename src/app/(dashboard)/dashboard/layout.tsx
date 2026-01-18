@@ -15,6 +15,7 @@ import {
   Book,
   BookOpenCheck,
   ClipboardCheck,
+  DollarSign,
   LucideUser
 } from "lucide-react";
 import { Suspense } from "react";
@@ -33,9 +34,9 @@ const navItems = [
     children: [],
   },
   {
-    href: "/dashboard/applications",
-    name: "Applications",
-    icon: <LucideUser />,
+    href: "/dashboard/payout",
+    name: "Payout",
+    icon: <DollarSign />,
     children: [],
   },
   {

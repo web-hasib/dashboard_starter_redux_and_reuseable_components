@@ -486,7 +486,7 @@ const InboxPage = () => {
 
   return (
     <FormProvider {...form}>
-      <Container className="py-6 bg-background min-h-screen">
+      <Container className="py-6  min-h-screen">
         <div className="mb-6">
           <Heading as="h1" size="h2">
             Reports & Disputes Inbox
