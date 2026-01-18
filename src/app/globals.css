@@ -66,7 +66,7 @@
   --background: #111213;
   --sidebar: #5e7389;
   --card: #1a1c1e;
-  --popover: #7494b3;
+  --popover: #6f7173;
 
   /* === TEXT === */
   --foreground: #ededed;
@@ -106,7 +106,7 @@
 /* Custom Scrollbar Styles */
 .scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.055) transparent;
 }
 
 .scrollbar-thin::-webkit-scrollbar {
